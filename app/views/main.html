@@ -1,0 +1,35 @@
+<div>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Quiz App</a>
+        </div>
+        <div class="collapse navbar-collapse">
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron question" ng-controller="UserCtrl" ng-repeat="question in quiz">
+        <button ng-hide="timer.enable" type="button" ng-click="countdown(question,10)" class="btn btn-default">Take Quiz!</button>
+        <p ng-show="timer.enable">{{timer.t}}</p>
+        <form action="">
+            <h2>{{question.q}}</h2>
+            <ul id='question-list'>
+                <li ng-repeat="option in question.options">
+                    <input ng-model="question.choice" type="radio" name="{{'option-' + $index}}" value="{{option}}">
+                    <span>{{$index + 1}} - </span>{{option}}</li>
+            </ul>
+            <button ng-click="checkAnswer(question)" ng-show="timer.enable" type="button" class="btn btn-default">Check Answer</button>
+        </form>
+    </div>
+
+</div>
+</div>
